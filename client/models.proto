@@ -1,0 +1,24 @@
+syntax = "proto3";
+package models;
+
+option go_package = "clientenc/models";
+
+message Package {
+  string name = 1;
+  bytes data = 2;
+  bytes nonce = 3;
+}
+
+enum Status {
+  NONE = 0; // 0 values are not sent on wire, so we don't need them
+  RoomAssigned = 1;
+  RoomFull = 2;
+}
+
+message RoomRequest {
+  string RoomId = 1;
+}
+
+message RoomResponse {
+  Status status = 1;
+}
